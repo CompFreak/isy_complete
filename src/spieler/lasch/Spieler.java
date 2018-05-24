@@ -17,6 +17,15 @@ public class Spieler implements OthelloSpieler {
     private int anzahlPassen = 0;
     private int tiefe = 6;
     
+    /**
+    * fuellt die Bewertungsmatrix aus, diese ist in 4 Abschnitte eingeteilt
+    *  _________
+    * |    |    |
+    * |  1 |  2 |
+    * |----|----|
+    * | 3  |  4 |
+    * |____|____|
+    */
     private static void fuelleBewertungsmatrix() {
         int spalte;
         Spieler.bm[0][0] = 50;
@@ -55,11 +64,19 @@ public class Spieler implements OthelloSpieler {
         }
     }
 
+    /**
+    * Konstruktor
+    * fuellt die Bewertungsmatrix mit aus und initialisiert das Spielfeld
+    */
     public Spieler() {
         Spieler.fuelleBewertungsmatrix();
         this.brett = new int[8][8];
     }
 
+    /**
+    * Konstruktor mit Suchtiefe
+    * @param suchtiefe int gibt die Suchtiefe an
+    */
     public Spieler(int suchtiefe) {
         this();
         if (suchtiefe > 0 && suchtiefe < 60) {
