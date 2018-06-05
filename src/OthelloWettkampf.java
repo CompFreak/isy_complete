@@ -19,7 +19,7 @@ public class OthelloWettkampf {
 	    //Die Spieler
 	    //spieler.add(new spieler.Referenzspieler( )); //Suchtiefe Default
 	    spieler.add(new spieler.Referenzspieler(9)); //Suchtiefe 9
-	    spieler.add(new spieler.lasch.Spieler());
+	    spieler.add(new spieler.hiro.Spieler());
 	    
 	    
 	    new rahmen.OthelloArena(150,  //Gesamtbedenkzeit in Sekunden 
