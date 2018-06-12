@@ -112,42 +112,42 @@ public class Spieler implements OthelloSpieler {
     	// Variable für die möglichen Züge erzeugen
         Vector<ZugHiRo> moeglicheZuege = new Vector<ZugHiRo>();
         // zuerst die Ecken überprüfen, da diese eine besondere Stellung im Spiel haben
-        if (brett[0][0] == 0 && (isLegal(0, 0, 0, 1, spielerAmZug) || isLegal(0, 0, 1, 0, spielerAmZug) || isLegal(0, 0, 1, 1, spielerAmZug))) {
+        if (brett[0][0] == 0 && (istErlaubt(0, 0, 0, 1, spielerAmZug) || istErlaubt(0, 0, 1, 0, spielerAmZug) || istErlaubt(0, 0, 1, 1, spielerAmZug))) {
             moeglicheZuege.add(new ZugHiRo(0, 0));
         }
-        if (brett[0][7] == 0 && (isLegal(0, 7, 0, -1, spielerAmZug) || isLegal(0, 7, 1, 0, spielerAmZug) || isLegal(0, 7, 1, -1, spielerAmZug))) {
+        if (brett[0][7] == 0 && (istErlaubt(0, 7, 0, -1, spielerAmZug) || istErlaubt(0, 7, 1, 0, spielerAmZug) || istErlaubt(0, 7, 1, -1, spielerAmZug))) {
             moeglicheZuege.add(new ZugHiRo(0, 7));
         }
-        if (brett[7][0] == 0 && (isLegal(7, 0, 0, 1, spielerAmZug) || isLegal(7, 0, -1, 0, spielerAmZug) || isLegal(7, 0, -1, 1, spielerAmZug))) {
+        if (brett[7][0] == 0 && (istErlaubt(7, 0, 0, 1, spielerAmZug) || istErlaubt(7, 0, -1, 0, spielerAmZug) || istErlaubt(7, 0, -1, 1, spielerAmZug))) {
             moeglicheZuege.add(new ZugHiRo(7, 0));
         }
-        if (brett[7][7] == 0 && (isLegal(7, 7, 0, -1, spielerAmZug) || isLegal(7, 7, -1, 0, spielerAmZug) || isLegal(7, 7, -1, -1, spielerAmZug))) {
+        if (brett[7][7] == 0 && (istErlaubt(7, 7, 0, -1, spielerAmZug) || istErlaubt(7, 7, -1, 0, spielerAmZug) || istErlaubt(7, 7, -1, -1, spielerAmZug))) {
             moeglicheZuege.add(new ZugHiRo(7, 7));
         }
         
         // geht erst alle Spalten durch und prüft die möglichen Züge
         for (int spalte = 1; spalte < 7; spalte++) {
-            if (brett[0][spalte] == 0 && (isLegal(0, spalte, 0, 1, spielerAmZug) || isLegal(0, spalte, 1, 1, spielerAmZug) || isLegal(0, spalte, 1, 0, spielerAmZug) || isLegal(0, spalte, 1, -1, spielerAmZug) || isLegal(0, spalte, 0, -1, spielerAmZug))) {
+            if (brett[0][spalte] == 0 && (istErlaubt(0, spalte, 0, 1, spielerAmZug) || istErlaubt(0, spalte, 1, 1, spielerAmZug) || istErlaubt(0, spalte, 1, 0, spielerAmZug) || istErlaubt(0, spalte, 1, -1, spielerAmZug) || istErlaubt(0, spalte, 0, -1, spielerAmZug))) {
                 moeglicheZuege.add(new ZugHiRo(0, spalte));
             }
-            if (brett[7][spalte] == 0 && (isLegal(7, spalte, 0, 1, spielerAmZug) || isLegal(7, spalte, 0, -1, spielerAmZug) || isLegal(7, spalte, -1, -1, spielerAmZug) || isLegal(7, spalte, -1, 0, spielerAmZug) || isLegal(7, spalte, -1, 1, spielerAmZug))) {
+            if (brett[7][spalte] == 0 && (istErlaubt(7, spalte, 0, 1, spielerAmZug) || istErlaubt(7, spalte, 0, -1, spielerAmZug) || istErlaubt(7, spalte, -1, -1, spielerAmZug) || istErlaubt(7, spalte, -1, 0, spielerAmZug) || istErlaubt(7, spalte, -1, 1, spielerAmZug))) {
                 moeglicheZuege.add(new ZugHiRo(7, spalte));
             }
         }
 
         // prüft alle Zeilen auf mögliche Züge
         for (int zeile = 1; zeile < 7; zeile++) {
-            if (brett[zeile][0] == 0 && (isLegal(zeile, 0, -1, 0, spielerAmZug) || isLegal(zeile, 0, -1, 1, spielerAmZug) || isLegal(zeile, 0, 0, 1, spielerAmZug) || isLegal(zeile, 0, 1, 1, spielerAmZug) || isLegal(zeile, 0, 1, 0, spielerAmZug))) {
+            if (brett[zeile][0] == 0 && (istErlaubt(zeile, 0, -1, 0, spielerAmZug) || istErlaubt(zeile, 0, -1, 1, spielerAmZug) || istErlaubt(zeile, 0, 0, 1, spielerAmZug) || istErlaubt(zeile, 0, 1, 1, spielerAmZug) || istErlaubt(zeile, 0, 1, 0, spielerAmZug))) {
                 moeglicheZuege.add(new ZugHiRo(zeile, 0));
             }
-            if (brett[zeile][7] == 0 && (isLegal(zeile, 7, -1, 0, spielerAmZug) || isLegal(zeile, 7, 1, 0, spielerAmZug) || isLegal(zeile, 7, 1, -1, spielerAmZug) || isLegal(zeile, 7, 0, -1, spielerAmZug) || isLegal(zeile, 7, -1, -1, spielerAmZug))) {
+            if (brett[zeile][7] == 0 && (istErlaubt(zeile, 7, -1, 0, spielerAmZug) || istErlaubt(zeile, 7, 1, 0, spielerAmZug) || istErlaubt(zeile, 7, 1, -1, spielerAmZug) || istErlaubt(zeile, 7, 0, -1, spielerAmZug) || istErlaubt(zeile, 7, -1, -1, spielerAmZug))) {
                 moeglicheZuege.add(new ZugHiRo(zeile, 7));
             }
         }
         
         for (int zeile = 1; zeile < 7; zeile++) {
             for (int spalte = 1; spalte < 7; spalte++) {
-                if (brett[zeile][spalte] == 0 && (isLegal(zeile, spalte, -1, -1, spielerAmZug) || isLegal(zeile, spalte, -1, 0, spielerAmZug) || isLegal(zeile, spalte, -1, 1, spielerAmZug) || isLegal(zeile, spalte, 0, -1, spielerAmZug) || isLegal(zeile, spalte, 0, 1, spielerAmZug) || isLegal(zeile, spalte, 1, -1, spielerAmZug) || isLegal(zeile, spalte, 1, 0, spielerAmZug) || isLegal(zeile, spalte, 1, 1, spielerAmZug))) {
+                if (brett[zeile][spalte] == 0 && (istErlaubt(zeile, spalte, -1, -1, spielerAmZug) || istErlaubt(zeile, spalte, -1, 0, spielerAmZug) || istErlaubt(zeile, spalte, -1, 1, spielerAmZug) || istErlaubt(zeile, spalte, 0, -1, spielerAmZug) || istErlaubt(zeile, spalte, 0, 1, spielerAmZug) || istErlaubt(zeile, spalte, 1, -1, spielerAmZug) || istErlaubt(zeile, spalte, 1, 0, spielerAmZug) || istErlaubt(zeile, spalte, 1, 1, spielerAmZug))) {
                     moeglicheZuege.add(new ZugHiRo(zeile, spalte));
                 }
             }
@@ -192,16 +192,22 @@ public class Spieler implements OthelloSpieler {
                 if (tiefe == 1) {
                     moeglicheZuege.get((int)i).bewertung = brettKopie.bewertePosition();
                 } else {
+                	// Debug Ausgabe um zu sehen, wie der Algorithmus durchläuft
                 	System.out.println("suchtiefe:" + tiefe + " /ispieler:" + iSpieler + " /alpha:" + alpha + " /beta:" + beta);
+                	// sucht den besten Zug und speichert diese
                     ZugHiRo besterZug = brettKopie.findeBestenZug(tiefe - 1, iSpieler * -1, alpha, beta);
+                    // errechnet die Bewertung für den Zug
                     moeglicheZuege.get((int)i).bewertung = besterZug.bewertung;
+                    // Prüfung des Alpha Wertes
                     if (iSpieler == spieler && besterZug.bewertung > alpha) {
                         alpha = besterZug.bewertung;
                     }
+                    // Prüfung des Beta Wertes
                     if (iSpieler != spieler && besterZug.bewertung < beta) {
                         beta = besterZug.bewertung;
                     }
                 }
+                // Init; maxpos und minPos werden auf 0 gesetzt; nur beim ersten Durchlauf
                 if (i == 0) {
                     maxpos = 0;
                     minpos = 0;
@@ -213,8 +219,9 @@ public class Spieler implements OthelloSpieler {
                         minpos = i;
                     }
                 }
-                if (alpha >= beta) 
+                if (alpha >= beta) {
                 	break;
+                }
             }
             if (iSpieler == spieler) {
                 return moeglicheZuege.get(maxpos);
@@ -223,34 +230,50 @@ public class Spieler implements OthelloSpieler {
         }
         ZugHiRo besterZug = new ZugHiRo(-1, -1);
         
-        if(tiefe == 1)
+        if (tiefe == 1) {
         	besterZug.bewertung = Integer.valueOf(bewertePosition());
-        else
+        } else {
         	besterZug.bewertung = findeBestenZug((int)(tiefe - 1), (int)(spieler * -1), (int)alpha, (int)beta).bewertung;
-        
+        }
+        	
         return besterZug;
     }
 
-    private boolean isLegal(int zeile, int spalte, int dz, int ds, int spieler) {
-        if (berechneDrehsteine(zeile, spalte, dz, ds, spieler) != null) {
+    /**
+     * prüft, ob es sich um einen erlaubten Zug handelt
+     * @param zeile int, zu prüfende Zeile
+     * @param spalte int, zu prüfende Spalte
+     * @param zeilenDifferenz int, Differenz der Zeilen
+     * @param spaltenDifferenz int, Differenz der Spalten
+     * @param spieler int, zu prüfender Spieler
+     * @return true, wenn der Zug erlaubt ist; false, wenn der Zug verboten ist
+     */
+    private boolean istErlaubt(int zeile, int spalte, int zeilenDifferenz, int spaltenDifferenz, int spieler) {
+        if (berechneDrehsteine(zeile, spalte, zeilenDifferenz, spaltenDifferenz, spieler) != null) {
             return true;
         }
         return false;
     }
     
+    /**
+     * 
+     * @param spieler int, Angabe des Spielers
+     * @param zug ZugHiRo, Zug, der gezogen werden soll
+     * @return drehsteine Vector, gibt die Steine zurück, die gedreht werden 
+     */
     private Vector<Integer> ziehe(int spieler, ZugHiRo zug) {
         Vector<Integer> drehsteine = new Vector<Integer>();
-        int dz = -1;
-        while (dz < 2) {
-            int ds = -1;
-            while (ds < 2) {
+        int zeilenDifferenz = -1;
+        while (zeilenDifferenz < 2) {
+            int spaltenDiffernez = -1;
+            while (spaltenDiffernez < 2) {
                 Vector<Integer> neueSteine;
-                if ((dz != 0 || ds != 0) && (neueSteine = berechneDrehsteine(zug.zeile, zug.spalte, dz, ds, spieler)) != null) {
+                if ((zeilenDifferenz != 0 || spaltenDiffernez != 0) && (neueSteine = berechneDrehsteine(zug.zeile, zug.spalte, zeilenDifferenz, spaltenDiffernez, spieler)) != null) {
                     drehsteine.addAll(neueSteine);
                 }
-                ++ds;
+                ++spaltenDiffernez;
             }
-            ++dz;
+            ++zeilenDifferenz;
         }
         if (!drehsteine.isEmpty()) {
             brett[zug.zeile][zug.spalte] = spieler;
@@ -262,18 +285,33 @@ public class Spieler implements OthelloSpieler {
         return drehsteine;
     }
 
-    private Vector<Integer> berechneDrehsteine(int zeile, int spalte, int dz, int ds, int spieler) {
-        Vector<Integer> drehsteine = null;
+    /**
+     * berechnet die Steine, die gedreht werden
+     * @param zeile int, gibt die Zeile an
+     * @param spalte int, gibt die Spalte an
+     * @param zeilenDifferenz int, gibt die Differenz der Zeilen an
+     * @param spaltenDifferenz int, gibt die Differzenz der Spalten an
+     * @param spieler int, gibt den Spieler an
+     * @return drehsteine Vector<Integer>, gibt die Steine an, die gedreht werden
+     */
+    private Vector<Integer> berechneDrehsteine(int zeile, int spalte, int zeilenDifferenz, int spaltenDifferenz, int spieler) {
+        // Init Rückgabewert
+    	Vector<Integer> drehsteine = null;
+    	// init, gegenspieler erzeugen
         int gegenspieler = spieler * -1;
-        int neueZeile = zeile + dz;
-        int neueSpalte = spalte + ds;
+        int neueZeile = zeile + zeilenDifferenz;
+        int neueSpalte = spalte + spaltenDifferenz;
+        // prüft, ob die neue Zeile und Spalte innerhalb des Feldes ist
         if (neueZeile >= 0 && neueZeile < 8 && neueSpalte >= 0 && neueSpalte < 8) {
+        	// wenn die neueZeile und Spalte der eigene Spieler ist, passiert nichts
             if (brett[neueZeile][neueSpalte] != gegenspieler) {
                 return null;
             }
             drehsteine = new Vector<Integer>();
             drehsteine.add(new Integer(neueZeile * 8 + neueSpalte));
-            while (neueZeile < 8 && (neueZeile) >= 0 && neueSpalte < 8 && (neueSpalte) >= 0) {
+            // solange die Zeile und Spalte innerhalb des Feldes ist wird die Schleife ausgeführt
+            while (neueZeile < 8 && neueZeile >= 0 && neueSpalte < 8 && neueSpalte >= 0) {
+            	// wenn die neue Position der eigene Spieler ist, dann wird der drehstein zurückgegeben
                 if (brett[neueZeile][neueSpalte] == spieler) {
                     return drehsteine;
                 }
@@ -281,29 +319,45 @@ public class Spieler implements OthelloSpieler {
                     return null;
                 }
                 drehsteine.add(new Integer(neueZeile * 8 + neueSpalte));
-                neueZeile += dz;
-                neueSpalte += ds;
+                neueZeile += zeilenDifferenz;
+                neueSpalte += spaltenDifferenz;
             }
         }
         return null;
     }
 
+    /**
+     * berechnet den eigenen Zug
+     * @param suchtiefe int, Tiefe, die durchlaufen werden soll
+     * @return ZugHiRo, gibt den eigenen Zug zurück
+     */
     private ZugHiRo eigenerZug(int suchtiefe) {
+    	// findet den besten Zug und speichert diesen in der Variable
         ZugHiRo meinZug = findeBestenZug(suchtiefe, spieler, ALPHA, BETA);
+        // Fehler abfangen, wenn es keinen besten Zug gibt
         if (meinZug == null) {
             return null;
         }
+        // wenn die Zeile außerhalb des Feldes ist, dann gibt es keinen Zug und es muss gepasst werden
         if (meinZug.zeile == -1) {
             anzahlPassen++;
             return meinZug;
         }
         anzahlPassen = 0;
+        // führt den besten Zug aus
         ziehe(spieler, meinZug);
         return meinZug;
     }
+    
+    /**
+     * berechnet den Zug des Gegenspielers
+     * @param zeile int, Zeile
+     * @param spalte int, Spalte
+     * @return 
+     */
     private boolean gegnerZug(int zeile, int spalte) {
         ZugHiRo gZug;
-       
+        // berechnet die möglichen Züge des Gegners
         Vector<ZugHiRo> moeglicheZuege = berechneMoeglicheZuege(-1 * spieler);
         if (moeglicheZuege.contains(gZug = new ZugHiRo(zeile, spalte))) {
         	if(gZug.zeile == -1)
