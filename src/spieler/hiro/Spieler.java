@@ -15,7 +15,7 @@ public class Spieler implements OthelloSpieler {
     private int[][] brett;
     private int spieler;
     private int anzahlPassen = 0;
-    private int tiefe = 9;
+    private int tiefe = 8;
     
     /**
     * fuellt die Bewertungsmatrix aus, diese ist in 4 Abschnitte eingeteilt
