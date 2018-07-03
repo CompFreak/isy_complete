@@ -28,7 +28,7 @@ public class Spieler implements OthelloSpieler {
     */
     private static void fuelleBewertungsmatrix() {
         int spalte;
-        Spieler.brettBewertung[0][0] = 50;
+        Spieler.brettBewertung[0][0] = 100;
         Spieler.brettBewertung[0][1] = -1;
         Spieler.brettBewertung[0][2] = 5;
         Spieler.brettBewertung[0][3] = 2;
@@ -153,6 +153,7 @@ public class Spieler implements OthelloSpieler {
             }
         }
         return moeglicheZuege;
+        
     }
 
     /*
@@ -400,7 +401,7 @@ public class Spieler implements OthelloSpieler {
 
     @Override
     public String meinName() {
-        return "LaSch";
+        return "HiRo";
     }
 }
 
