@@ -1,4 +1,4 @@
-package spieler.hiro;
+package spieler.hirodi;
 
 import java.util.Vector;
 
@@ -108,47 +108,47 @@ public class Spieler implements OthelloSpieler {
      * @param spielerAmZug int gibt an, für welchen Spieler die möglichen Züge berechnet werden sollen
      * @return moeglicheZuege Vector<ZugHiRo> gibt alle möglichen Züge zurück 
      */
-    private Vector<ZugHiRo> berechneMoeglicheZuege(int spielerAmZug) {
+    private Vector<ZugHiRoDi> berechneMoeglicheZuege(int spielerAmZug) {
     	// Variable für die möglichen Züge erzeugen
-        Vector<ZugHiRo> moeglicheZuege = new Vector<ZugHiRo>();
+        Vector<ZugHiRoDi> moeglicheZuege = new Vector<ZugHiRoDi>();
         // zuerst die Ecken überprüfen, da diese eine besondere Stellung im Spiel haben
         if (brett[0][0] == 0 && (istErlaubt(0, 0, 0, 1, spielerAmZug) || istErlaubt(0, 0, 1, 0, spielerAmZug) || istErlaubt(0, 0, 1, 1, spielerAmZug))) {
-            moeglicheZuege.add(new ZugHiRo(0, 0));
+            moeglicheZuege.add(new ZugHiRoDi(0, 0));
         }
         if (brett[0][7] == 0 && (istErlaubt(0, 7, 0, -1, spielerAmZug) || istErlaubt(0, 7, 1, 0, spielerAmZug) || istErlaubt(0, 7, 1, -1, spielerAmZug))) {
-            moeglicheZuege.add(new ZugHiRo(0, 7));
+            moeglicheZuege.add(new ZugHiRoDi(0, 7));
         }
         if (brett[7][0] == 0 && (istErlaubt(7, 0, 0, 1, spielerAmZug) || istErlaubt(7, 0, -1, 0, spielerAmZug) || istErlaubt(7, 0, -1, 1, spielerAmZug))) {
-            moeglicheZuege.add(new ZugHiRo(7, 0));
+            moeglicheZuege.add(new ZugHiRoDi(7, 0));
         }
         if (brett[7][7] == 0 && (istErlaubt(7, 7, 0, -1, spielerAmZug) || istErlaubt(7, 7, -1, 0, spielerAmZug) || istErlaubt(7, 7, -1, -1, spielerAmZug))) {
-            moeglicheZuege.add(new ZugHiRo(7, 7));
+            moeglicheZuege.add(new ZugHiRoDi(7, 7));
         }
         
         // geht erst alle Spalten durch und prüft die möglichen Züge
         for (int spalte = 1; spalte < 7; spalte++) {
             if (brett[0][spalte] == 0 && (istErlaubt(0, spalte, 0, 1, spielerAmZug) || istErlaubt(0, spalte, 1, 1, spielerAmZug) || istErlaubt(0, spalte, 1, 0, spielerAmZug) || istErlaubt(0, spalte, 1, -1, spielerAmZug) || istErlaubt(0, spalte, 0, -1, spielerAmZug))) {
-                moeglicheZuege.add(new ZugHiRo(0, spalte));
+                moeglicheZuege.add(new ZugHiRoDi(0, spalte));
             }
             if (brett[7][spalte] == 0 && (istErlaubt(7, spalte, 0, 1, spielerAmZug) || istErlaubt(7, spalte, 0, -1, spielerAmZug) || istErlaubt(7, spalte, -1, -1, spielerAmZug) || istErlaubt(7, spalte, -1, 0, spielerAmZug) || istErlaubt(7, spalte, -1, 1, spielerAmZug))) {
-                moeglicheZuege.add(new ZugHiRo(7, spalte));
+                moeglicheZuege.add(new ZugHiRoDi(7, spalte));
             }
         }
 
         // prüft alle Zeilen auf mögliche Züge
         for (int zeile = 1; zeile < 7; zeile++) {
             if (brett[zeile][0] == 0 && (istErlaubt(zeile, 0, -1, 0, spielerAmZug) || istErlaubt(zeile, 0, -1, 1, spielerAmZug) || istErlaubt(zeile, 0, 0, 1, spielerAmZug) || istErlaubt(zeile, 0, 1, 1, spielerAmZug) || istErlaubt(zeile, 0, 1, 0, spielerAmZug))) {
-                moeglicheZuege.add(new ZugHiRo(zeile, 0));
+                moeglicheZuege.add(new ZugHiRoDi(zeile, 0));
             }
             if (brett[zeile][7] == 0 && (istErlaubt(zeile, 7, -1, 0, spielerAmZug) || istErlaubt(zeile, 7, 1, 0, spielerAmZug) || istErlaubt(zeile, 7, 1, -1, spielerAmZug) || istErlaubt(zeile, 7, 0, -1, spielerAmZug) || istErlaubt(zeile, 7, -1, -1, spielerAmZug))) {
-                moeglicheZuege.add(new ZugHiRo(zeile, 7));
+                moeglicheZuege.add(new ZugHiRoDi(zeile, 7));
             }
         }
         
         for (int zeile = 1; zeile < 7; zeile++) {
             for (int spalte = 1; spalte < 7; spalte++) {
                 if (brett[zeile][spalte] == 0 && (istErlaubt(zeile, spalte, -1, -1, spielerAmZug) || istErlaubt(zeile, spalte, -1, 0, spielerAmZug) || istErlaubt(zeile, spalte, -1, 1, spielerAmZug) || istErlaubt(zeile, spalte, 0, -1, spielerAmZug) || istErlaubt(zeile, spalte, 0, 1, spielerAmZug) || istErlaubt(zeile, spalte, 1, -1, spielerAmZug) || istErlaubt(zeile, spalte, 1, 0, spielerAmZug) || istErlaubt(zeile, spalte, 1, 1, spielerAmZug))) {
-                    moeglicheZuege.add(new ZugHiRo(zeile, spalte));
+                    moeglicheZuege.add(new ZugHiRoDi(zeile, spalte));
                 }
             }
         }
@@ -180,8 +180,8 @@ public class Spieler implements OthelloSpieler {
      * @param beta int Wert für BETA
      * @return besterZug ZugHiRo gibt den Besten Zug zurück
      */
-    private ZugHiRo findeBestenZug(int tiefe, int iSpieler, int alpha, int beta) {
-        Vector<ZugHiRo> moeglicheZuege = berechneMoeglicheZuege(iSpieler);
+    private ZugHiRoDi findeBestenZug(int tiefe, int iSpieler, int alpha, int beta) {
+        Vector<ZugHiRoDi> moeglicheZuege = berechneMoeglicheZuege(iSpieler);
         int anzahlMoeglicheZuege = moeglicheZuege.size();
         
         if (anzahlMoeglicheZuege > 0) {
@@ -196,7 +196,7 @@ public class Spieler implements OthelloSpieler {
                 	// Debug Ausgabe um zu sehen, wie der Algorithmus durchläuft
                 	System.out.println("suchtiefe:" + tiefe + " /ispieler:" + iSpieler + " /alpha:" + alpha + " /beta:" + beta);
                 	// sucht den besten Zug und speichert diese
-                    ZugHiRo besterZug = brettKopie.findeBestenZug(tiefe - 1, iSpieler * -1, alpha, beta);
+                    ZugHiRoDi besterZug = brettKopie.findeBestenZug(tiefe - 1, iSpieler * -1, alpha, beta);
                     // errechnet die Bewertung für den Zug
                     moeglicheZuege.get((int)i).bewertung = besterZug.bewertung;
                     // Prüfung des Alpha Wertes
@@ -229,7 +229,7 @@ public class Spieler implements OthelloSpieler {
             }
             return moeglicheZuege.get(minpos);
         }
-        ZugHiRo besterZug = new ZugHiRo(-1, -1);
+        ZugHiRoDi besterZug = new ZugHiRoDi(-1, -1);
         
         if (tiefe == 1) {
         	besterZug.bewertung = Integer.valueOf(bewertePosition());
@@ -262,7 +262,7 @@ public class Spieler implements OthelloSpieler {
      * @param zug ZugHiRo, Zug, der gezogen werden soll
      * @return drehsteine Vector, gibt die Steine zurück, die gedreht werden 
      */
-    private Vector<Integer> ziehe(int spieler, ZugHiRo zug) {
+    private Vector<Integer> ziehe(int spieler, ZugHiRoDi zug) {
         Vector<Integer> drehsteine = new Vector<Integer>();
         int zeilenDifferenz = -1;
         while (zeilenDifferenz < 2) {
@@ -332,9 +332,9 @@ public class Spieler implements OthelloSpieler {
      * @param suchtiefe int, Tiefe, die durchlaufen werden soll
      * @return ZugHiRo, gibt den eigenen Zug zurück
      */
-    private ZugHiRo eigenerZug(int suchtiefe) {
+    private ZugHiRoDi eigenerZug(int suchtiefe) {
     	// findet den besten Zug und speichert diesen in der Variable
-        ZugHiRo meinZug = findeBestenZug(suchtiefe, spieler, ALPHA, BETA);
+        ZugHiRoDi meinZug = findeBestenZug(suchtiefe, spieler, ALPHA, BETA);
         // Fehler abfangen, wenn es keinen besten Zug gibt
         if (meinZug == null) {
             return null;
@@ -357,10 +357,10 @@ public class Spieler implements OthelloSpieler {
      * @return 
      */
     private boolean gegnerZug(int zeile, int spalte) {
-        ZugHiRo gZug;
+        ZugHiRoDi gZug;
         // berechnet die möglichen Züge des Gegners
-        Vector<ZugHiRo> moeglicheZuege = berechneMoeglicheZuege(-1 * spieler);
-        if (moeglicheZuege.contains(gZug = new ZugHiRo(zeile, spalte))) {
+        Vector<ZugHiRoDi> moeglicheZuege = berechneMoeglicheZuege(-1 * spieler);
+        if (moeglicheZuege.contains(gZug = new ZugHiRoDi(zeile, spalte))) {
         	if(gZug.zeile == -1)
         		anzahlPassen++;
         	else
@@ -376,7 +376,7 @@ public class Spieler implements OthelloSpieler {
         if (vorherigerZug != null) {
             gegnerZug(vorherigerZug.getZeile(), vorherigerZug.getSpalte());
         }
-        ZugHiRo meinZug = eigenerZug(tiefe);
+        ZugHiRoDi meinZug = eigenerZug(tiefe);
         Zug ergebnis = new Zug(meinZug.zeile, meinZug.spalte);
         return ergebnis;
     }
@@ -401,7 +401,7 @@ public class Spieler implements OthelloSpieler {
 
     @Override
     public String meinName() {
-        return "HiRo";
+        return "HiRoDi";
     }
 }
 

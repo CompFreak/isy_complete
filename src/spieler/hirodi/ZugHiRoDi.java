@@ -1,12 +1,12 @@
-package spieler.hiro;
+package spieler.hirodi;
 
-import spieler.hiro.ZugHiRo;
+import spieler.hirodi.ZugHiRoDi;
 
 /**
  * Klasse für den Zug
  * Hier sind die getter und setter Funktionen für den Zug aufgeführt.
  */
-public class ZugHiRo {
+public class ZugHiRoDi {
 	    int spalte;
 	    int zeile;
 	    Integer bewertung = null;
@@ -16,7 +16,7 @@ public class ZugHiRo {
 	     * @param zeile int Nummer der Zeile
 	     * @param spalte int Nummer der Spalte
 	     */
-	    ZugHiRo(int zeile, int spalte) {
+	    ZugHiRoDi(int zeile, int spalte) {
 	        this.zeile = zeile;
 	        this.spalte = spalte;
 	    }
@@ -25,7 +25,7 @@ public class ZugHiRo {
 	     * prüft, ob die Zeile und Spalte eines Zuges gleich sind
 	     */
 	    public boolean equals(Object o) {
-	        ZugHiRo z2 = (ZugHiRo)o;
+	        ZugHiRoDi z2 = (ZugHiRoDi)o;
 	        if (this.zeile == z2.zeile && this.spalte == z2.spalte) {
 	            return true;
 	        }
